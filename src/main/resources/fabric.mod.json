@@ -38,14 +38,4 @@
 	"suggests": {
 		"another-mod": "*"
 	}
-	"custom": {
-    	"modmenu": {
-   			 "badges": [],
- 			   "links": {
-     			 "modmenu.discord": "https://discord.gg/…",
-    			 "modmenu.modrinsc": "https://modrinth.com/mod/…"
-    }
-  }
-}
-
 }
