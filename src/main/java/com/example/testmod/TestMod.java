@@ -1,24 +1,37 @@
 package com.example.testmod;
 
 import net.fabricmc.api.ModInitializer;
-
+import net.minecraft.item.Consumable;
+import net.minecraft.item.FoodProperties;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.registry.Registries;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class TestMod implements ModInitializer {
-	public static final String MOD_ID = "test-mod";
+    public static final String MOD_ID = "testmod";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    // Создаём FoodProperties для нашей печеньки
+    public static final FoodProperties COOKIE_FOOD = new FoodProperties.Builder()
+            .nutrition(4)             // сколько сытости даёт
+            .saturationModifier(0.6f) // насыщение
+            .build();
 
-	@Override
-	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+    // Создаём сам Item с этим FoodProperties
+    public static final Item COOKIE_ITEM = new Item(new Item.Properties()
+            .food(COOKIE_FOOD)
+            .group(ItemGroup.FOOD)
+    );
 
-		LOGGER.info("Hello Fabric world!");
-	}
+    @Override
+    public void onInitialize() {
+        // Регистрируем Item
+        Registries.register(Registries.ITEM, new Identifier(MOD_ID, "cookie_item"), COOKIE_ITEM);
+
+        LOGGER.info("Cookie item registered!");
+    }
 }
