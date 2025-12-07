@@ -11,11 +11,11 @@ buildscript {
     }
 }
 
-apply plugin: "fabric-loom"
-
 plugins {
 	id 'maven-publish'
 }
+
+apply plugin: "fabric-loom"
 
 version = project.mod_version
 group = project.maven_group
