@@ -32,6 +32,3 @@ jobs:
         with:
           name: fabric-mod-1.21.1
           path: build/libs/*.jar
-cy-submission/README.md
-    - name: Generate and submit dependency graph
-      uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
